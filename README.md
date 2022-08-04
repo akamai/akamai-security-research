@@ -1,4 +1,4 @@
-# akamai-security-research
+# Akamai Security Research
 This repository includes code and IoCs that are the product of research done in Akamai's various security research teams.
 
 You can read about our research in [Akamai's Security blog](https://akamai.com/blog/security).
