@@ -1,5 +1,7 @@
 # akamai-security-research
-This repository serves malware iocs detected by Akamai Security Research group and other open source tools developed by them  
+This repository includes code and IoCs that are the product of research done in Akamai's various security research teams.
+
+You can read about our research in [Akamai's Security blog](https://akamai.com/blog/security).
   
 <br />
 <br />  
