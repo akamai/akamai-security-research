@@ -9,8 +9,8 @@ You can read about our research in [Akamai's Security blog](https://akamai.com/b
 -------
 Copyright 2022 Akamai Technologies Inc.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use any of the files in the Akamai Security Research repository except in compliance with the License.
 You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
