@@ -32,7 +32,7 @@ We will also link to external tools and publications by other researchers, which
 ## Exploitation Proof-of-Concept (PoC)
 
 * [CVE-2022-30216](../PoCs/cve-2022-30216)
-* CVE-2022-38034 (TBD)
+* [CVE-2022-38034](../PoCs/cve-2022-38034)
 * _srvsvc_ Caching Bypass (TBD)
 
 ## Conferences Materials
@@ -41,8 +41,8 @@ We will also link to external tools and publications by other researchers, which
   * [Slides](../conferences_materials/DEF%20CON%2030/Exploring%20Ancient%20Ruins%20to%20Find%20Modern%20Bugs%20-%20Discovering%20a%200-Day%20in%20MS-RPC%20Service.pdf)
   * [Demo video](../conferences_materials/DEF%20CON%2030/CVE-2022-30216_RelayDemo.webm)
 * [Hexacon](https://www.hexacon.fr/) (Stiv Kupchik, Ophir Harpaz)
-  * Slides
-  * Demo video
+  * [Slides](../conferences_materials/Hexacon%202022/Exploring%20Ancient%20Ruins%20to%20Find%20New%20Bugs%20-%20Hexacon%202022.pdf)
+  * [Demo video](../conferences_materials/Hexacon%202022/wkssvc_demo_for_hexacon.mp4)
     
 -------
 Copyright 2022 Akamai Technologies Inc.
