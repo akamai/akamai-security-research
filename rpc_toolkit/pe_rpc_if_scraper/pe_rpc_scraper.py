@@ -51,7 +51,7 @@ def scrape_file(file_path: str, disassembler: Optional[BaseRpcRegistrationExtrac
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("scrape_path", help="path we wish to scrape, could be file or folder", type=str)
-    parser.add_argument("output_path", help="path for json output file", default=OUTPUT_FILENAME, type=str)
+    parser.add_argument("--output_path", help="path for json output file", default=OUTPUT_FILENAME, type=str)
     parser.add_argument(
         "-r",
         help="parse recursively, will only work on folder paths (obviously)",

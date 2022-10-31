@@ -60,13 +60,29 @@ class SYMBOL_INFO(ctypes.Structure):
         ("Name", wintypes.CHAR * MAX_SYM_NAME)
     ]
 
+class MODULE_INFO(ctypes.Structure):
+    _fields_ = [
+        ("SizeOfStruct", wintypes.DWORD),
+        ("BaseOfImage", wintypes.DWORD),
+        ("ImageSize", wintypes.DWORD),
+        ("TimeDateStamp", wintypes.DWORD),
+        ("CheckSum", wintypes.DWORD),
+        ("NumSyms", wintypes.DWORD),
+        ("SymType", wintypes.DWORD),
+        ("ModuleName", wintypes.CHAR*32),
+        ("ImageName", wintypes.CHAR*256),
+        ("LoadedImageName", wintypes.CHAR*256),
+    ]
+
 
 class PESymbolMatcher(object):
     def __init__(self):
-        self._dbghelp = ctypes.windll.Dbghelp
+        # self._dbghelp = ctypes.windll.Dbghelp
+        self._dbghelp = ctypes.CDLL(r"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\dbghelp.dll")
         self._define_dbghelp_funcs()
 
-        self._hproc = ctypes.windll.kernel32.GetCurrentProcess()
+        # self._hproc = ctypes.windll.kernel32.GetCurrentProcess()
+        self._hproc = ctypes.windll.kernel32.OpenProcess(0x000F0000, False, ctypes.windll.kernel32.GetCurrentProcessId())
         self.loaded_pe = None
         self._loaded_pe_base_addr = 0
 
@@ -115,6 +131,11 @@ class PESymbolMatcher(object):
         self._dbghelp.SymUnloadModule64.argtypes = [wintypes.HANDLE, DWORD64]
         self._dbghelp.SymUnloadModule64.restype = wintypes.BOOL
         self._dbghelp.SymCleanup.argtypes = [wintypes.HANDLE]
+        self._dbghelp.SymGetModuleInfo.argtypes = [
+            wintypes.HANDLE,
+            DWORD64,
+            ctypes.POINTER(MODULE_INFO)
+        ]
 
         ctypes.windll.kernel32.GetCurrentProcess.restype = wintypes.HANDLE
 
@@ -133,6 +154,10 @@ class PESymbolMatcher(object):
         )
         if self._loaded_pe_base_addr:
             self.loaded_pe = pe_path
+            module_info = MODULE_INFO()
+            module_info.SizeOfStruct = ctypes.sizeof(MODULE_INFO)
+            # print(self._dbghelp.SymGetModuleInfo(self._hproc, self._loaded_pe_base_addr, ctypes.byref(module_info)))
+            # print(ctypes.GetLastError())
         else:
             print("failed loading PE", ctypes.windll.kernel32.GetLastError())
 

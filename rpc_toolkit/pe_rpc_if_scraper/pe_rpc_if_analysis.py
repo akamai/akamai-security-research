@@ -83,7 +83,8 @@ class PeRpcInterfaceScraper:
                 registration_info = self.disassembler.get_rpc_registration_info(pe_path)
                 for info in registration_info.values():
                     info['global_caching_enabled'] = self._check_flags_for_global_cache(info[INTERFACE_FLAGS])
-                    if info[INTERFACE_SECURITY_CALLBACK] == PARSING_ERROR:
+                    # print(info[INTERFACE_SECURITY_CALLBACK])
+                    if info[INTERFACE_SECURITY_CALLBACK] is None or info[INTERFACE_SECURITY_CALLBACK] == PARSING_ERROR or info[INTERFACE_SECURITY_CALLBACK] == 0:
                         info['security_callback_name'] = ""
                     else:
                         info['security_callback_name'] = self._sym_helper.sym_from_addr(

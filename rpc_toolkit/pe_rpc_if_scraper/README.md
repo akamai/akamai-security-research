@@ -6,14 +6,6 @@ It can be used to bulk analyze a folder or simply one file.
 The output is a json file with information about the RPC interfaces used in the PE file.  
 Additional information is available if the PE is the RPC server.
 
-Usage: `python usage: pe_rpc_scraper.py [-h] [-r] [-d {idapro,radare}] [-P DISASSEMBLER_PATH] scrape_path output_path`
-
-The script was tested on both Windows and Linux, but the disassemblers were tested on a single OS.  
-- The Ida integration was tested on Windows, and the scripts assumes by default that the idat binary is located under Ida's default installation folder.  
-- The Radare2 integration was tested on Linux - it uses r2pipe, which doesn't work well on newer Windows versions. It assumes r2 can be found through the PATH environment variable.
-
-Example output, as well as some parsing that we did can be found in [rpc_interface_lists](../rpc_interface_lists)
-
 Usage: `python usage: pe_rpc_scraper.py [-h] [-r] [-d {idapro,radare}] [-P DISASSEMBLER_PATH] scrape_path output_path`  
 If no output path is specified, then by default output would be to the cwd, with the filename "rpc_interfaces.json".
 
