@@ -41,9 +41,11 @@ We will also link to external tools and publications by other researchers, which
 * [DEF CON 30](https://defcon.org/html/defcon-30/dc-30-index.html) (Ben Barnea, Ophir Harpaz)
   * [Slides](../conferences_materials/DEF%20CON%2030/Exploring%20Ancient%20Ruins%20to%20Find%20Modern%20Bugs%20-%20Discovering%20a%200-Day%20in%20MS-RPC%20Service.pdf)
   * [Demo video](../conferences_materials/DEF%20CON%2030/CVE-2022-30216_RelayDemo.webm)
+  * [Talk recording](https://www.youtube.com/watch?v=lDvNKHGPsJg)
 * [Hexacon](https://www.hexacon.fr/) (Stiv Kupchik, Ophir Harpaz)
   * [Slides](../conferences_materials/Hexacon%202022/Exploring%20Ancient%20Ruins%20to%20Find%20New%20Bugs%20-%20Hexacon%202022.pdf)
   * [Demo video](../conferences_materials/Hexacon%202022/wkssvc_demo_for_hexacon.mp4)
+  * [Talk recording](https://www.youtube.com/watch?v=rrfI6dXMJQQ)
     
 -------
 Copyright 2022 Akamai Technologies Inc.
