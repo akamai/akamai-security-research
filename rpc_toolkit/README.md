@@ -18,6 +18,7 @@ We will also link to external tools and publications by other researchers, which
 ## MS-RPC Background and Analysis
 
 * [RPC Interface Inventory](rpc_interface_lists)
+* [RPC ProtocolSequence int to string](rpc_protocol_sequence.txt)
 * [A Definitive Guide to the Remote Procedure Call (RPC) Filter](https://www.akamai.com/blog/security/guide-rpc-filter)
 * [Analyzing RPC With Ghidra and Neo4j](https://blog.xpnsec.com/analysing-rpc-with-ghidra-neo4j/) (by [@_xpn_](https://twitter.com/_xpn_))
 * [Offensive Windows IPC Internals 2: RPC](https://csandker.io/2021/02/21/Offensive-Windows-IPC-2-RPC.html) (by [@csandker](https://twitter.com/0xcsandker))
