@@ -16,7 +16,8 @@ We will also link to external tools and publications by other researchers, which
 * [RPCEnum](https://github.com/xpn/RpcEnum) (by [@_xpn_](https://twitter.com/_xpn_))
 
 ## MS-RPC Background and Analysis
-
+* [MS-RPC Security Measures - Flowchart](msrpc_security_flowchart.png)
+* [An Overview of MS-RPC and Its Security Mechanisms](https://www.akamai.com/blog/security-research/msrpc-security-mechanisms)
 * [RPC Interface Inventory](rpc_interface_lists)
 * [RPC ProtocolSequence int to string](rpc_protocol_sequence.txt)
 * [A Definitive Guide to the Remote Procedure Call (RPC) Filter](https://www.akamai.com/blog/security/guide-rpc-filter)
@@ -29,11 +30,14 @@ We will also link to external tools and publications by other researchers, which
 * [Critical Remote Code Execution Vulnerabilities in Windows RPC Runtime](https://www.akamai.com/blog/security/critical-remote-code-execution-vulnerabilities-windows-rpc-runtime)
 * [RPC Runtime, Take Two: Discovering a New Vulnerability](https://www.akamai.com/blog/security/rpc-runtime-patch-tuesday-take-two)
 * [Cold Hard Cache: Caching Vulnerabilities in the _Server_ and _Workstation_ Services](https://www.akamai.com/blog/security-research/cold-hard-cache-bypassing-rpc-with-cache-abuse)
+* [You’ve Crossed the Line — Disturbing a Host’s Rest](https://www.akamai.com/blog/security-research/msrpc-lsm-cve-disturbing-hosts-rest)
 
 ## Exploitation Proof-of-Concept (PoC)
 
 * [CVE-2022-30216](../PoCs/cve-2022-30216)
 * [CVE-2022-38034](../PoCs/cve-2022-38034)
+* [CVE-2022-37973](../PoCs/cve-2022-37973)
+* [CVE-2022-37998](../PoCs/cve-2022-37998)
 * _srvsvc_ Caching Bypass (TBD)
 
 ## Conferences Materials
