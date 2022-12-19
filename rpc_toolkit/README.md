@@ -17,6 +17,7 @@ We will also link to external tools and publications by other researchers, which
 
 ## MS-RPC Background and Analysis
 * [MS-RPC Security Measures - Flowchart](msrpc_security_flowchart.png)
+  * [Original Whimsical](https://whimsical.com/rpc-security-M5EXms8zLnYFN8s6Lknh3q)
 * [An Overview of MS-RPC and Its Security Mechanisms](https://www.akamai.com/blog/security-research/msrpc-security-mechanisms)
 * [RPC Interface Inventory](rpc_interface_lists)
 * [RPC ProtocolSequence int to string](rpc_protocol_sequence.txt)
@@ -30,7 +31,7 @@ We will also link to external tools and publications by other researchers, which
 * [Critical Remote Code Execution Vulnerabilities in Windows RPC Runtime](https://www.akamai.com/blog/security/critical-remote-code-execution-vulnerabilities-windows-rpc-runtime)
 * [RPC Runtime, Take Two: Discovering a New Vulnerability](https://www.akamai.com/blog/security/rpc-runtime-patch-tuesday-take-two)
 * [Cold Hard Cache: Caching Vulnerabilities in the _Server_ and _Workstation_ Services](https://www.akamai.com/blog/security-research/cold-hard-cache-bypassing-rpc-with-cache-abuse)
-* [You’ve Crossed the Line — Disturbing a Host’s Rest](https://www.akamai.com/blog/security-research/msrpc-lsm-cve-disturbing-hosts-rest)
+* [You’ve Crossed the Line — Disturbing a Host’s Rest (LSM Vulnerabilities)](https://www.akamai.com/blog/security-research/msrpc-lsm-cve-disturbing-hosts-rest)
 
 ## Exploitation Proof-of-Concept (PoC)
 
