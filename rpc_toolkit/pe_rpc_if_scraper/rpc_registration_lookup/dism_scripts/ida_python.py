@@ -17,9 +17,15 @@
 
 import idaapi
 import idc
+import idautils
+import ida_ua
 
-from typing import List, Tuple, Dict  # Using `Union` typing causes IDA to raise an exception, so we don't use it
+from typing import List, Tuple, Dict, Optional  # Using `Union` typing causes IDA to raise an exception, so we don't use it
 import json
+import string
+
+from security_callback_analyzer.security_callback_analyzer import analyze_security_callback
+from security_callback_analyzer.rpc_call_attributes_struct import RpcCallAttrStructType
 
 TEMP_OUTPUT_FILE = "ida_pro_rpc_reg_info.tmp"
 PARSING_ERROR = "argument_parsing_error"
@@ -80,6 +86,13 @@ def parse_argument(arg_ea: int): # -> Union[str, int]
             return get_reg_value(arg_ea)
     return PARSING_ERROR
 
+def get_security_callback_addr(func_ea: str) -> int:
+    try:
+        return int(func_ea, 16)
+    except ValueError:
+        return 0
+    except TypeError:
+        return 0
 
 def get_func_call_args(func_ea: int, arg_count: int):  # -> Union[str, int]
     xref_args = {}
@@ -89,7 +102,7 @@ def get_func_call_args(func_ea: int, arg_count: int):  # -> Union[str, int]
             args_addrs = get_call_args_manually(xref_ea, max_args=arg_count)
             args_addrs += [idaapi.BADADDR] * (arg_count - len(args_addrs))
         xref_args[hex(xref_ea)] = [parse_argument(arg_ea) for arg_ea in args_addrs] if args_addrs else []
-        
+    
     return xref_args 
 
 
@@ -127,17 +140,29 @@ def get_call_args_manually(call_ea: int, max_look_behind: int = 20, max_args: in
         return args
     return args + [stack_params[off] for off in sorted(stack_params, key=stack_params.get, reverse=True)]
 
+def get_callback_addr_from_args(args: list) -> Optional[str]:
+    """
+    Functions RpcServerRegisterIf2 (7 args) and RpcServerRegisterIfEx (6 args) hold the security callback address on their last arg.
+    Function RpcServerRegisterIf3 (8 args) holds the security callback address on the arg before their last arg.
+    Function RpcServerRegisterIf doesn't accept a security callback address.
+    """
+    args_count = len(args)
+    if args_count == 6 or args_count == 7:
+        return args[-1]
+    elif args_count == 8:
+        return args[-2]
+    else:
+        return None       
 
 def get_rpc_server_registration_info() -> Dict[str, List[Dict[int, Tuple]]]:
-    return {
-        func_name: get_func_call_args(
-            func_ea,
-            get_arg_count_for_function_name(func_name)
-        )
-        for func_name, func_ea
-        in find_rpc_server_registration_funcs()
-    }
-
+    reg_info = {}
+    for func_name, func_ea in find_rpc_server_registration_funcs():
+        args = get_func_call_args(func_ea, get_arg_count_for_function_name(func_name))
+        security_callbacks_info = {}
+        for xref_ea, xref_args in args.items():
+            security_callbacks_info.update(get_security_callback_info(get_callback_addr_from_args(xref_args), xref_ea))
+            reg_info.update({func_name: {"args": args, "security_callback_info": security_callbacks_info}})
+    return reg_info
 
 def get_arg_count_for_function_name(func_name: str) -> int:
     if func_name.endswith("2"):
@@ -149,6 +174,24 @@ def get_arg_count_for_function_name(func_name: str) -> int:
     else:
         return 3
 
+def is_callback_uses_rpc_call_atributes(security_callback_addr: int) -> bool:
+    stype = RpcCallAttrStructType(security_callback_addr)
+    return stype.uses_rpc_call_attrs_struct()
+
+def get_security_callback_info(addr: str, func_xref: str) -> Dict:
+    security_callback_addr = get_security_callback_addr(addr)
+
+    use_call_attributes = is_callback_uses_rpc_call_atributes(security_callback_addr)
+    sc_info = {"use_call_attributes": use_call_attributes}
+
+    if security_callback_addr == 0:
+        return {}
+
+    security_callback_checks = analyze_security_callback(security_callback_addr) if use_call_attributes else {}
+    if security_callback_checks:
+        sc_info.update({"security_callback_checks": security_callback_checks})
+    
+    return {func_xref: sc_info}
 
 if __name__ == "__main__":
     idaapi.auto_wait()

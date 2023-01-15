@@ -143,10 +143,10 @@ def get_call_args_manually(call_ea: int, max_look_behind: int = 20, max_args: in
 
 def get_rpc_server_registration_info() -> Dict[str, List[Dict[int, Tuple]]]:
     return {
-        func_name: get_func_call_args(
+        func_name: {"args": get_func_call_args(
             func_ea,
-            get_arg_count_for_function_name(func_name)
-        )
+            get_arg_count_for_function_name(func_name))
+        }
         for func_name, func_ea
         in find_rpc_server_registration_funcs()
     }
