@@ -26,6 +26,7 @@ INTERFACE_FLAGS = "flags"
 INTERFACE_SECURITY_CALLBACK = "security_callback_addr"
 INTERFACE_HAS_DESCRIPTOR = "has_security_descriptor"
 INTERFACE_ADDRESS = "interface_address"
+INTERFACE_SECURITY_CALLBACK_INFO = "security_callback_info"
 
 
 class UnknownRpcServerRegistrationFunctionException(Exception):
@@ -47,15 +48,19 @@ class BaseRpcRegistrationExtractor(metaclass=ABCMeta):
 
     def get_rpc_registration_info(self, pe_path: str) -> Dict[str, Dict]:
         reg_info = {}
-        for func_name, func_calls in self._get_rpc_registration_info(pe_path).items():
+        for func_name, func_info in self._get_rpc_registration_info(pe_path).items():
+            func_calls = func_info.get("args", {})
+            security_callbacks = func_info.get("security_callback_info", None)
             for xref, xref_params in func_calls.items():
                 parsed_params = self._get_parser_for_func_name(func_name)(xref_params)
+                security_callback = security_callbacks.get(xref, None) if security_callbacks else None
                 reg_info[xref] = {
                     INTERFACE_ADDRESS: parsed_params[0],
                     INTERFACE_FLAGS: parsed_params[1],
                     INTERFACE_SECURITY_CALLBACK: parsed_params[2],
-                    INTERFACE_HAS_DESCRIPTOR: parsed_params[3]
-                }
+                    INTERFACE_HAS_DESCRIPTOR: parsed_params[3],
+                    INTERFACE_SECURITY_CALLBACK_INFO: security_callback
+                }         
         return reg_info
 
     @abstractmethod
@@ -64,8 +69,8 @@ class BaseRpcRegistrationExtractor(metaclass=ABCMeta):
         # The output should look like this:
         # {
         #     function_name: {
-        #                        function_xref_addr: [arg1, arg2, arg3...],
-        #                        function_other_xref_addr: [arg1, arg2, arg3...],
+        #                        function_xref_addr: [[arg1, arg2, arg3...], use_call_attributes, security_callback_info],
+        #                        function_other_xref_addr: [[arg1, arg2, arg3...], use_call_attributes, security_callback_info],
         #                        ...
         #                    }
         # }

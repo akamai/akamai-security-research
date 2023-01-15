@@ -19,6 +19,7 @@ from rpc_registration_lookup.base_rpc_registration_scraper import\
     BaseRpcRegistrationExtractor,\
     INTERFACE_SECURITY_CALLBACK,\
     INTERFACE_FLAGS,\
+    INTERFACE_SECURITY_CALLBACK_INFO, \
     PARSING_ERROR
 from pe_utils import get_rdata_offset_size_rva, assert_dotnet_pe, ptr_to_rva
 from symbol_helper import PESymbolMatcher
@@ -83,7 +84,10 @@ class PeRpcInterfaceScraper:
                 registration_info = self.disassembler.get_rpc_registration_info(pe_path)
                 for info in registration_info.values():
                     info['global_caching_enabled'] = self._check_flags_for_global_cache(info[INTERFACE_FLAGS])
-                    info['security_callback_name'] = self._get_security_callback_name(info[INTERFACE_SECURITY_CALLBACK])
+                    if info[INTERFACE_SECURITY_CALLBACK]:
+                        info['security_callback_info'] = self._update_security_callback_info(info[INTERFACE_SECURITY_CALLBACK], info[INTERFACE_SECURITY_CALLBACK_INFO])
+                    else: 
+                        info['security_callback_info'] = None
                     
                 ret_dict['interface_registration_info'] = registration_info
 
@@ -158,3 +162,17 @@ class PeRpcInterfaceScraper:
             return self._sym_helper.sym_from_addr(callback_addr)
         except ValueError:
             return ""
+        except TypeError:
+            return ""
+    
+    def _update_security_callback_info(self, callback_addr: str, callback_info: Dict[str, Any]) -> Optional[Dict]:
+        if callback_info and callback_addr != "argument_parsing_error":
+            sc_name = self._get_security_callback_name(callback_addr)
+            if sc_name == "":
+                return None
+
+            output_info = {'security_callback_name': sc_name}
+            output_info.update(callback_info)
+            return output_info
+        return None
+        
