@@ -39,7 +39,8 @@ We will also link to external tools and publications by other researchers, which
 * [CVE-2022-38034](../PoCs/cve-2022-38034)
 * [CVE-2022-37973](../PoCs/cve-2022-37973)
 * [CVE-2022-37998](../PoCs/cve-2022-37998)
-* _srvsvc_ Caching Bypass (TBD)
+* [CVE-2022-30216](../PoCs/cve-2022-30216)
+* [CVE-2022-44707](../PoCs/cve-2022-44707)
 
 ## Conferences Materials
 
