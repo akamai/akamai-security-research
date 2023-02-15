@@ -32,6 +32,7 @@ We will also link to external tools and publications by other researchers, which
 * [RPC Runtime, Take Two: Discovering a New Vulnerability](https://www.akamai.com/blog/security/rpc-runtime-patch-tuesday-take-two)
 * [Cold Hard Cache: Caching Vulnerabilities in the _Server_ and _Workstation_ Services](https://www.akamai.com/blog/security-research/cold-hard-cache-bypassing-rpc-with-cache-abuse)
 * [You’ve Crossed the Line — Disturbing a Host’s Rest (LSM Vulnerabilities)](https://www.akamai.com/blog/security-research/msrpc-lsm-cve-disturbing-hosts-rest)
+* [Can't Wait to Shut You Down — Remote DoS Using Wininit.exe](https://www.akamai.com/blog/security-research/cant-wait-to-shut-you-down-msrpc-wininit)
 
 ## Exploitation Proof-of-Concept (PoC)
 
@@ -39,8 +40,9 @@ We will also link to external tools and publications by other researchers, which
 * [CVE-2022-38034](../PoCs/cve-2022-38034)
 * [CVE-2022-37973](../PoCs/cve-2022-37973)
 * [CVE-2022-37998](../PoCs/cve-2022-37998)
-* [CVE-2022-30216](../PoCs/cve-2022-30216)
 * [CVE-2022-44707](../PoCs/cve-2022-44707)
+* [CVE-2023-21771](../PoCs/cve-2023-21771)
+
 
 ## Conferences Materials
 
