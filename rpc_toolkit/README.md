@@ -6,7 +6,9 @@ RPC Toolkit is a set of tools, articles, blog posts and links to help security r
 
 During the last months, our team has put a lot of effort in learning MS-RPC, its internals, security and weaknesses. Along the way, we wrote some tools and automations to facilitate parts of the research process. We have shared our findings in blog posts, tweets and conference talks, and we'd like to make all these materials accessible through this repo.
 
-We will also link to external tools and publications by other researchers, which we found useful in our learning process.
+We will also link to external tools and publications by other researchers, which we found useful in our learning process.  
+
+For a writeup about the toolkit and its latest changes, please refer to this blogpost: [Fantastic RPC Interfaces and How to Find Them](https://www.akamai.com/blog/security-research/rpc-toolkit-fantastic-interfaces-how-to-find).  
 
 ## Tools
 
