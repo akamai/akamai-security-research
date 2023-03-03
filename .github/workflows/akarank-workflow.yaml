@@ -1,0 +1,63 @@
+name: 'akarank.copy'
+
+on:
+  schedule:
+    - cron: '0 10 * * *' # runs at 10am UTC every day
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  autocommit:
+    name: 'akarank.copy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: akarank.copy
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - uses: Azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        enable-AzPSSession: true 
+
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    # download file
+    - name: run powershell script to download blob to repo
+      shell: pwsh
+      run: |
+          Install-Module -Name Az.Storage -Force
+          Import-Module Az.Storage
+
+          $context = Get-AzStorageAccount -ResourceGroupName "rad-ds-infra" -Name "raddeakarankstorage"
+          $containerName =  "output-top-n"
+          $yesterday = (Get-Date).AddDays(-1).ToString('yyyy-MM-dd')
+          $fileName = "top10K.csv"
+
+          cd ./akarank
+          $DLBlob1HT = @{
+              Blob        = "akarank/date=$($yesterday)/top10K.csv"
+              Container   = $containerName
+              Destination = "./$($fileName)"
+              Context     = $context.Context
+              Force       = $true
+          }
+          Get-AzStorageBlobContent @DLBlob1HT
+    
+    # auto-commit. it uses PAT but we want to change it to MACHINE USER
+    - uses: EndBug/add-and-commit@v9
+      with:
+        message: "akarank copy $($fileName) dated $($yesterday) from container $($containerName)"
+        committer_name: GitHub Actions
+        committer_email: actions@github.com
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_ACTION_AKARANK_COPY }}
