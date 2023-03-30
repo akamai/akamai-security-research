@@ -1,8 +1,7 @@
-# Cybersquatting
-This repository includes auxiliary files for Cybersquatting project.
-At the moment there is only [Top 50 combosquatting keywords](Keywords.csv) here, but we expect more files to come.
+# Cybersquatting detection
+This repository includes auxiliary files for the blog post on cybersquatting detection: [The Most Common Combosquatting Keyword Is “Support”](https://www.akamai.com/blog/security-research/combosquatting-keyword-analysis-support).
 
-You can read about our research in [Akamai's Security blog](https://akamai.com/blog/security).
+You can read about our research at [Akamai's Security blog](https://akamai.com/blog/security).
   
 <br />
 <br />  
