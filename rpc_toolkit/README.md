@@ -35,6 +35,8 @@ For a writeup about the toolkit and its latest changes, please refer to this blo
 * [Cold Hard Cache: Caching Vulnerabilities in the _Server_ and _Workstation_ Services](https://www.akamai.com/blog/security-research/cold-hard-cache-bypassing-rpc-with-cache-abuse)
 * [You’ve Crossed the Line — Disturbing a Host’s Rest (LSM Vulnerabilities)](https://www.akamai.com/blog/security-research/msrpc-lsm-cve-disturbing-hosts-rest)
 * [Can't Wait to Shut You Down — Remote DoS Using Wininit.exe](https://www.akamai.com/blog/security-research/cant-wait-to-shut-you-down-msrpc-wininit)
+* [LSM Vulnerability - Elevation of Privilege](https://twitter.com/nachoskrnl/status/1625882600777695232)
+* [Exploring Three Remote Code Execution Vulnerabilities in RPC Runtime](https://www.akamai.com/blog/security-research/rpc-runtime-exploring-three-vulnerabilities)
 
 ## Exploitation Proof-of-Concept (PoC)
 
