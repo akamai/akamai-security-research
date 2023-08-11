@@ -14,6 +14,7 @@ For a writeup about the toolkit and its latest changes, please refer to this blo
 
 * [IDL scraper and parser](idl_scraper)
 * [PE RPC scraper and parser](pe_rpc_if_scraper)
+* [Rpc Visibility](rpc_visibility)
 * [RPCView](https://www.rpcview.org/) (by Jean-Marie Borello, Julien Boutet, Jeremy Bouetard and Yoanne Girardin)
 * [RPCEnum](https://github.com/xpn/RpcEnum) (by [@_xpn_](https://twitter.com/_xpn_))
 
@@ -21,6 +22,7 @@ For a writeup about the toolkit and its latest changes, please refer to this blo
 * [MS-RPC Security Measures - Flowchart](msrpc_security_flowchart.png)
   * [Original Whimsical](https://whimsical.com/rpc-security-M5EXms8zLnYFN8s6Lknh3q)
 * [An Overview of MS-RPC and Its Security Mechanisms](https://www.akamai.com/blog/security-research/msrpc-security-mechanisms)
+* [Give Me an E, Give Me a T, Give Me a W. What Do You Get? RPC!](https://www.akamai.com/blog/security-research/msrpc-defense-measures-in-windows-etw)
 * [RPC Interface Inventory](rpc_interface_lists)
 * [RPC ProtocolSequence int to string](rpc_protocol_sequence.txt)
 * [A Definitive Guide to the Remote Procedure Call (RPC) Filter](https://www.akamai.com/blog/security/guide-rpc-filter)
@@ -58,9 +60,12 @@ For a writeup about the toolkit and its latest changes, please refer to this blo
   * [Slides](../conferences_materials/Hexacon%202022/Exploring%20Ancient%20Ruins%20to%20Find%20New%20Bugs%20-%20Hexacon%202022.pdf)
   * [Demo video](../conferences_materials/Hexacon%202022/wkssvc_demo_for_hexacon.mp4)
   * [Talk recording](https://www.youtube.com/watch?v=rrfI6dXMJQQ)
+* [BlackHat USA 2023](https://www.blackhat.com/us-23/) (Stiv Kupchik)
+  * [Slides](../conferences_materials/BlackHat%20USA%202023/)
+  * [Demo video](../conferences_materials/BlackHat%20USA%202023/rpc_visibility_demo.mp4)
     
 -------
-Copyright 2022 Akamai Technologies Inc.
+Copyright 2023 Akamai Technologies Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
