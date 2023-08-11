@@ -1,0 +1,22 @@
+node.Computer {
+  diameter: 50px;
+  color: #009cde;
+  border-color: #ff9933;
+  border-width: 1px;
+  text-color-internal: #FFFFFF;
+  font-size: 10px;
+  defaultCaption: "<id>";
+  caption: "{hostname}";
+}
+relationship {
+  color: #ff9933;
+  shaft-width: 1px;
+  font-size: 8px;
+  padding: 3px;
+  text-color-external: #000000;
+  text-color-internal: #FFFFFF;
+  caption: "<type>";
+}
+relationship.Connects {
+  caption: "{interface_name}<{function_name}>";
+}
