@@ -7,7 +7,7 @@ You can read about our research in [Akamai's Security blog](https://akamai.com/b
 <br />  
     
 -------
-Copyright 2023 Akamai Technologies Inc.
+Copyright 2024 Akamai Technologies Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); 
 you may not use any of the files in the Akamai Security Research repository except in compliance with the License.
